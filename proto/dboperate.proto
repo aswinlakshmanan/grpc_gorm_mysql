@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package proto;
+
+service Operation {
+    rpc insert(insDelUpdRequest) returns (reply) {}
+    rpc delete(insDelUpdRequest) returns (reply) {}
+    rpc update(insDelUpdRequest) returns (reply) {}
+    rpc execSql(sqlRequest) returns (reply) {}
+}
+
+
+
+message insDelUpdRequest {
+    int32 id = 1;
+    string name = 2;
+    float price = 3;
+    int32 typeId = 4;
+    int64 createTime = 5;
+}
+
+message selectRequest {
+    string columns = 1;
+    string table = 2;
+    string condition = 3;
+}
+
+message sqlRequest {
+    string sql = 1;
+}
+
+message reply {
+    string result = 1;
+}
